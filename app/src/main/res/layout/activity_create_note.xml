@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_note"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".activities.CreateNoteActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:onClick="backToHome"
+            android:clickable="true"
+            android:focusable="true"
+            android:elevation="16dp"
+            android:src="@drawable/ic_baseline_arrow_back_ios_new_24"/>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/deleteNote"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:onClick="deleteNote"
+            android:elevation="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/ic_baseline_delete_24"/>
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/newNoteTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_3"
+        android:hint="Add title"
+        android:maxLength="50"
+        android:elevation="16dp"
+        android:padding="8dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/newNoteText"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        android:textColor="@color/white"
+        android:background="@drawable/background_3"
+        android:gravity="top"
+        android:hint="Enter text"
+        android:padding="8dp"
+        android:elevation="16dp"
+        android:textColorHint="@color/white"
+        android:textSize="18sp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/saveNoteBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:elevation="8dp"
+        android:src="@drawable/ic_baseline_save_24"
+        app:backgroundTint="#E6000000"
+        app:tint="@color/white"
+        android:clickable="true"
+        android:focusable="true" />
+
+</LinearLayout>
