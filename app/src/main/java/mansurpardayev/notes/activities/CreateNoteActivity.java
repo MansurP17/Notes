@@ -76,7 +76,6 @@ public class CreateNoteActivity extends AppCompatActivity {
                 }
 
                 if (id == -1) {
-                    deleteNote.setVisibility(View.GONE);
                     Note noteView = new Note(title, text);
                     database.getNoteInterface().insert(noteView);
                     note = database.getNoteInterface().getNoteByLastItem();
