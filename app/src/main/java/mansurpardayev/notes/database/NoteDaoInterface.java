@@ -21,7 +21,7 @@ public interface NoteDaoInterface {
     @Update
     void update(Note note);
 
-    @Query("SELECT * FROM Note ORDER BY title, time DESC")
+    @Query("SELECT * FROM Note ORDER BY time DESC")
     List<Note> getAllNotes();
 
     @Query("SELECT * FROM Note WHERE ID=:id")

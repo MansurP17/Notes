@@ -68,11 +68,11 @@ public class MainActivity extends Activity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-             //   floatingActionButton.setVisibility(View.GONE);
                 String searchTitle = editable.toString();
                 newNoteList = new ArrayList<>();
                 for (int i = 0; i < notes.size(); i++) {
-                    if (notes.get(i).getTitle().toLowerCase(Locale.ROOT).contains(searchTitle.toLowerCase(Locale.ROOT))){
+                    if (notes.get(i).getTitle().toLowerCase(Locale.ROOT).contains(searchTitle.toLowerCase(Locale.ROOT)) ||
+                            notes.get(i).getText().toLowerCase(Locale.ROOT).contains(searchTitle.toLowerCase(Locale.ROOT))){
                         newNoteList.add(notes.get(i));
                     }
                 }

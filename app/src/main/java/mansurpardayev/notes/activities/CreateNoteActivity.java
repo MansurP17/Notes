@@ -1,15 +1,20 @@
 package mansurpardayev.notes.activities;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -94,8 +99,36 @@ public class CreateNoteActivity extends AppCompatActivity {
 
     public void deleteNote(View view) {
         if (note!=null){
-            database.getNoteInterface().delete(note);
-            onBackPressed();
+            AlertDialog.Builder builder = new AlertDialog.Builder(CreateNoteActivity.this, R.style.AlertDialogCustom);
+            builder.setCancelable(false);
+
+            TextView title = new TextView(this);
+            title.setText("Are you sure?");
+            title.setPadding(10, 10, 10, 10);
+            title.setTextColor(Color.WHITE);
+            title.setTextSize(20);
+
+            builder.setCustomTitle(title);
+
+
+
+            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    database.getNoteInterface().delete(note);
+                    onBackPressed();
+                }
+            });
+            builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+
+            AlertDialog dialog = builder.create();
+            dialog.getWindow().setBackgroundDrawableResource(R.color.gray);
+            dialog.show();
         }
     }
 }
