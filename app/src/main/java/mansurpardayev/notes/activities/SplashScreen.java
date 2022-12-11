@@ -1,6 +1,4 @@
-package mansurpardayev.notes;
-
-import androidx.appcompat.app.AppCompatActivity;
+package mansurpardayev.notes.activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,7 +8,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 
-import mansurpardayev.notes.activities.MainActivity;
+import mansurpardayev.notes.R;
 
 public class SplashScreen extends Activity {
 
