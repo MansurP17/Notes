@@ -1,8 +1,6 @@
 package mansurpardayev.notes.activities;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -110,12 +108,12 @@ public class MainActivity extends Activity {
                         public void onAdDismissedFullScreenContent() {
                             super.onAdDismissedFullScreenContent();
                             startActivity(new Intent(MainActivity.this, CreateNoteActivity.class));
+                            mInterstitialAd = null;
+                            setAds();
                         }
                     });
                 }
-                else {
-                    startActivity(new Intent(MainActivity.this, CreateNoteActivity.class));
-                }
+                  else  startActivity(new Intent(MainActivity.this, CreateNoteActivity.class));
             }
         });
 
