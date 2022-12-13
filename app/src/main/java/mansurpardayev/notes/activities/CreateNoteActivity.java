@@ -103,7 +103,7 @@ public class CreateNoteActivity extends AppCompatActivity {
 
             TextView title = new TextView(this);
             title.setText("Are you sure?");
-            title.setPadding(10, 10, 10, 10);
+            title.setPadding(50, 50, 0, 10);
             title.setTextColor(Color.WHITE);
             title.setTextSize(20);
 

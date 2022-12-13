@@ -11,6 +11,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.gms.ads.AdRequest;
@@ -39,7 +40,7 @@ public class MainActivity extends Activity {
     List<Note> notes;
     NoteDatabase database;
     EditText search;
-    TextView isEmptyTxt;
+    ImageView isEmptyImg;
 
     List<Note> newNoteList;
     boolean resetData = false;
@@ -67,8 +68,16 @@ public class MainActivity extends Activity {
         recyclerView.setLayoutManager(layoutManager);
         adapter = new NoteAdapter(notes, this);
 
-        if (notes.isEmpty()) isEmptyTxt.setVisibility(View.VISIBLE);
-        else isEmptyTxt.setVisibility(View.GONE);
+        if (notes.isEmpty()) {
+            isEmptyImg.setVisibility(View.VISIBLE);
+            search.setVisibility(View.GONE);
+            recyclerView.setVisibility(View.GONE);
+        }
+        else {
+            search.setVisibility(View.VISIBLE);
+            isEmptyImg.setVisibility(View.GONE);
+            recyclerView.setVisibility(View.VISIBLE);
+        }
 
         recyclerView.setAdapter(adapter);
 
@@ -123,8 +132,18 @@ public class MainActivity extends Activity {
     @Override
     protected void onStart() {
         super.onStart();
-        if (notes.isEmpty()) isEmptyTxt.setVisibility(View.VISIBLE);
-        else isEmptyTxt.setVisibility(View.GONE);
+
+        if (notes.isEmpty()) {
+            isEmptyImg.setVisibility(View.VISIBLE);
+            search.setVisibility(View.GONE);
+            recyclerView.setVisibility(View.GONE);
+        }
+        else {
+            search.setVisibility(View.VISIBLE);
+            isEmptyImg.setVisibility(View.GONE);
+            recyclerView.setVisibility(View.VISIBLE);
+        }
+
         if (resetData) {
             setNotes();
             adapter.resetNotes(notes);
@@ -138,7 +157,7 @@ public class MainActivity extends Activity {
     }
 
     public void findById() {
-        isEmptyTxt = findViewById(R.id.isemptytxt);
+        isEmptyImg = findViewById(R.id.isemptytxt);
         recyclerView = findViewById(R.id.notesRecycler);
         search = findViewById(R.id.searchEdit);
         floatingActionButton = findViewById(R.id.addNewNoteBtn);
@@ -147,14 +166,24 @@ public class MainActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (notes.isEmpty()) isEmptyTxt.setVisibility(View.VISIBLE);
-        else isEmptyTxt.setVisibility(View.GONE);
+
+        if (notes.isEmpty()) {
+            isEmptyImg.setVisibility(View.VISIBLE);
+            search.setVisibility(View.GONE);
+            recyclerView.setVisibility(View.GONE);
+        }
+        else {
+            search.setVisibility(View.VISIBLE);
+            isEmptyImg.setVisibility(View.GONE);
+            recyclerView.setVisibility(View.VISIBLE);
+        }
     }
 
     public void setAds() {
         AdRequest adRequest = new AdRequest.Builder().build();
 
-        InterstitialAd.load(this, "ca-app-pub-3940256099942544/1033173712", adRequest,
+        // R.string.intersad is ad unit ID
+        InterstitialAd.load(this, getString(R.string.intersad), adRequest,
                 new InterstitialAdLoadCallback() {
                     @Override
                     public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {

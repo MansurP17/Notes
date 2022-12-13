@@ -126,7 +126,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
         });
         AdRequest adRequest = new AdRequest.Builder().build();
 
-        InterstitialAd.load(context, "ca-app-pub-3940256099942544/1033173712", adRequest,
+        InterstitialAd.load(context, context.getString(R.string.intersad), adRequest,
                 new InterstitialAdLoadCallback() {
                     @Override
                     public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
